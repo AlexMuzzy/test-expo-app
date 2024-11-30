@@ -1,16 +1,8 @@
-import ParallaxScrollView from "@/components/ParallaxScrollView";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
-import { IconSymbol } from "@/components/ui/IconSymbol";
 import { useThemeColor } from "@/hooks/useThemeColor";
 import { useState } from "react";
-import {
-  Button,
-  Image,
-  StyleSheet,
-  TextInput,
-  TouchableOpacity,
-} from "react-native";
+import { Button, StyleSheet, TextInput, TouchableOpacity } from "react-native";
 
 type Todo = {
   id: number;
@@ -77,6 +69,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 32,
+    marginTop: 100,
     gap: 16,
     overflow: "hidden",
   },
