@@ -27,54 +27,48 @@ export default function HomeScreen() {
   });
 
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: "#A1CEDC", dark: "#1D3D47" }}
-      headerImage={
-        <Image
-          source={require("@/assets/images/partial-react-logo.png")}
-          style={styles.reactLogo}
-        />
-      }
-    >
+    <>
       {isLoading && <ThemedText>Loading...</ThemedText>}
       {isError && <ThemedText>Error: {error.message}</ThemedText>}
       {pokemonData && (
-        <>
-          <ThemedView style={styles.titleContainer}>
-            <ThemedText style={{ fontWeight: "bold", fontSize: 24 }}>
-              {pokemonData.name}
-            </ThemedText>
+        <ParallaxScrollView
+          headerBackgroundColor={{ light: "#A1CEDC", dark: "#1D3D47" }}
+          headerImage={
             <Image
               source={{ uri: pokemonData.sprites.front_default }}
-              style={{ width: 100, height: 100 }}
+              style={styles.reactLogo}
             />
-          </ThemedView>
-          <ThemedView style={styles.stepContainer}>
-            <ThemedText style={{ fontWeight: "bold", fontSize: 20 }}>
-              Abilities
-            </ThemedText>
-            {pokemonData.abilities.map((ability) => (
-              <ThemedText key={ability.ability.name}>
-                {ability.ability.name}
+          }
+        >
+          <>
+            <ThemedView>
+              <ThemedText style={{ fontWeight: "bold", fontSize: 24 }}>
+                {pokemonData.name}
               </ThemedText>
-            ))}
-          </ThemedView>
-          <ThemedView style={styles.stepContainer}>
-            <ThemedText style={{ fontWeight: "bold", fontSize: 20 }}>
-              HP Stat: {pokemonData.stats[0].base_stat}
-            </ThemedText>
-          </ThemedView>
-        </>
+            </ThemedView>
+            <ThemedView style={styles.stepContainer}>
+              <ThemedText style={{ fontWeight: "bold", fontSize: 20 }}>
+                Abilities
+              </ThemedText>
+              {pokemonData.abilities.map((ability: any) => (
+                <ThemedText key={ability.ability.name}>
+                  {ability.ability.name}
+                </ThemedText>
+              ))}
+            </ThemedView>
+            <ThemedView style={styles.stepContainer}>
+              <ThemedText style={{ fontWeight: "bold", fontSize: 20 }}>
+                HP Stat: {pokemonData.stats[0].base_stat}
+              </ThemedText>
+            </ThemedView>
+          </>
+        </ParallaxScrollView>
       )}
-    </ParallaxScrollView>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
   stepContainer: {
     gap: 8,
     marginBottom: 8,
